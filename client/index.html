@@ -7,7 +7,67 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
 <body>
-<h1>IMDB</h1>
+    <h1>IMDB</h1>
+    <nav>
+        <div class="menu-box csoport">
+            <select id="menu" class="menu-class">
+                <option selected = "selected">Menu</option>
+            </select>
+        </div>
+
+        <div class="search-box csoport">
+            <input id="searchBar" type="text" placeholder="Search..">
+            <form>
+                <select id="kateg">
+                    <option selected = "selected">All</option>
+                    <option>Action</option>
+                    <option>Comedy</option>
+                    <option>Drama</option>
+                    <option>Fantasy</option>
+                    <option>Horror</option>
+                    <option>Sci-fi</option>
+                    <option>Sport</option>
+                    <option>Thriller</option>
+                </select>
+            </form>
+        </div>
+
+        <div class="signin-box csoport">
+            <a>Home</a>
+            <a>Sing in</a>
+        </div>
+    </nav>
+
+    <table>
+        <thead>
+            <tr>
+               <th>Title</th>
+               <th>Length</th>
+               <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Batman</td>
+                <td>1h 20m</td>
+                <td>7.5</td>
+            </tr>
+            <tr>
+                <td>Spiderman</td>
+                <td>1h 34m</td>
+                <td>6.2</td>
+            </tr>
+            <tr>
+                <td>X-Men</td>
+                <td>1h 7m</td>
+                <td>9.3</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+
 <!--<div>-->
 <!--    <h2>Filmek:</h2>-->
 <!--    <button onclick="getFilms()">Megjelenítés</button>-->
@@ -25,32 +85,3 @@
 <!--        console.log('A szerver által visszaadott film:' + serverFilm);-->
 <!--    }-->
 <!--</script>-->
-    <nav>
-        <select id="menu">
-            <option selected = "selected">Menu</option>
-        </select>
-
-        <form id = "form">
-            <select id = "kateg">
-                <option selected = "selected">All</option>
-                <option>Action</option>
-                <option>Comedy</option>
-                <option>Drama</option>
-                <option>Fantasy</option>
-                <option>Horror</option>
-                <option>Sci-fi</option>
-                <option>Sport</option>
-                <option>Thriller</option>
-            </select>
-        </form>
-    </nav>
-
-<div>
-    <input id="searchBar" type="text" placeholder="Search..">
-    <a>Home</a>
-    <a>Sing in</a>
-</div>
-
-
-</body>
-</html>

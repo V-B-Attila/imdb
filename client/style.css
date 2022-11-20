@@ -7,18 +7,50 @@ h1 {
     text-align: center;
 }
 
-#menu {
-    margin-left: 100px;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid orange;
+    margin: 20px;
+    padding-bottom: 5px;
+}
+
+.csoport {
+    /*border: 2px solid red;*/
+    width: 400px;
+}
+
+.search-box {
+    display: flex;
+    /*border: 2px solid cornflowerblue;*/
+    justify-content: center;
 }
 
 #kateg {
-    position: relative;
-    left: 74%;
+    height: 100%;
+}
+
+.signin-box {
+    display: flex;
+
+    justify-content: end;
+    gap: 20px;
+}
+
+table {
+    margin: auto;
+    border: 1px solid orange;
+    width: 400px;
+    border-collapse: collapse;
+}
+
+table th {
+    text-align: center;
+    border-bottom: 1px solid orange;
 
 }
 
-#searchBar {
-    position: relative;
-    left: 80%;
-
-}
+/*table tr {*/
+/*    border-bottom: 1px solid orange;*/
+/*}*/

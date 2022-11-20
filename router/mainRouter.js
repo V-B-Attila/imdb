@@ -24,6 +24,11 @@ router.get('/awards', async function (req, res) {
     }
 });
 
+router.get('/genres', async function (req, res) {
+    const awards = await awardDao.read();
+    res.render('awards', {awards});
+});
+
 // TODO: Genre and Actors READ implementation
 // + 1. ejs page (genres, actors)
 // + 2. GET+Render (res.render)

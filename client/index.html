@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filmek</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+<h1>IMDB</h1>
+<!--<div>-->
+<!--    <h2>Filmek:</h2>-->
+<!--    <button onclick="getFilms()">Megjelenítés</button>-->
+<!--    <ul>-->
+<!--    </ul>-->
+
+<!--</div>-->
+<!--<script>-->
+<!--    function getFilms() {-->
+<!--        let serverFilm = '';-->
+<!--        let serverURL = 'http://localhost:3001/filmek';-->
+
+<!--        axios.get('http://localhost:3001/filmek');-->
+
+<!--        console.log('A szerver által visszaadott film:' + serverFilm);-->
+<!--    }-->
+<!--</script>-->
+    <nav>
+        <select id="menu">
+            <option selected = "selected">Menu</option>
+        </select>
+
+        <form id = "form">
+            <select id = "kateg">
+                <option selected = "selected">All</option>
+                <option>Action</option>
+                <option>Comedy</option>
+                <option>Drama</option>
+                <option>Fantasy</option>
+                <option>Horror</option>
+                <option>Sci-fi</option>
+                <option>Sport</option>
+                <option>Thriller</option>
+            </select>
+        </form>
+    </nav>
+
+<div>
+    <input id="searchBar" type="text" placeholder="Search..">
+    <a>Home</a>
+    <a>Sing in</a>
+</div>
+
+
+</body>
+</html>

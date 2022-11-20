@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Adatb backend server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "webserver",
+    "films"
+  ],
+  "author": "Velicán-Benkő Attila",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mariadb": "^3.0.2",
+    "msql": "^1.0.3"
+  }
+}

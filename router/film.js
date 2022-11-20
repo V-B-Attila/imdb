@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const FilmDAO = require('../DAO/filmDAO');
+const FilmDAO = require('../dao/filmDAO');
 const filmDAO = new FilmDAO();
 
 router.post('/film', async function (req,res){

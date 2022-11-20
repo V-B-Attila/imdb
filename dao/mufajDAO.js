@@ -1,5 +1,7 @@
 const db = require('../config/db');
 
+//TODO: replace result.rows -> result.splice(0);
+
 class MufajDAO {
 
     async create (genre){

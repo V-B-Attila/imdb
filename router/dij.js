@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const DijDAO = require('../DAO/dijDAO');
+const DijDAO = require('../dao/dijDAO');
 const dijDAO = new DijDAO();
 
 router.post('/dij', async function(req,res){
@@ -28,7 +28,7 @@ router.put('/dij', async function (req,res){
     res.status(200).send({message: 'Sikeres frissítés!'});
 })
 
-router.put('/dij', async function(req,res){
+router.delete('/dij', async function(req,res){
     const id = req.body;
     await dijDAO.delete(id);
     res.status(200).send({message: 'Sikeres törlés!'});

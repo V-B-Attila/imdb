@@ -1,0 +1,12 @@
+table {
+    width: 700px;
+}
+
+table td {
+    border-bottom: 1px solid orange;
+}
+
+table td:last-child {
+    width: 600px;
+    height: 60px;
+}

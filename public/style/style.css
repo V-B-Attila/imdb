@@ -48,9 +48,35 @@ table {
 table th {
     text-align: center;
     border-bottom: 1px solid orange;
+}
 
+table td {
+    text-align: center;
+}
+
+table .ertekeles {
+    /*text-align: start;*/
+    /*padding-left: 25px;*/
 }
 
 /*table tr {*/
 /*    border-bottom: 1px solid orange;*/
 /*}*/
+
+a {
+    color: orange;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.icon:hover {
+    filter: brightness(150%);
+    cursor: pointer;
+}

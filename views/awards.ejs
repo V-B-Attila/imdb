@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Filmek</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/awards.css">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
 <body>
-    <h1>IMDB</h1>
+    <h1>Awards 🏆</h1>
     <nav>
         <div class="menu-box csoport">
             <select id="menu" class="menu-class">
@@ -33,55 +34,28 @@
         </div>
 
         <div class="signin-box csoport">
-            <a>Home</a>
-            <a>Sing in</a>
+            <a href="/">Films</a>
+            <a class="active" href="/awards" >Awards</a>
+            <a href="/genres">Genres</a>
+            <a href="/actors">Actors</a>
         </div>
     </nav>
 
     <table>
         <thead>
             <tr>
-               <th>Title</th>
-               <th>Length</th>
-               <th>Score</th>
+               <th>Name</th>
+               <th>Description</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Batman</td>
-                <td>1h 20m</td>
-                <td>7.5</td>
-            </tr>
-            <tr>
-                <td>Spiderman</td>
-                <td>1h 34m</td>
-                <td>6.2</td>
-            </tr>
-            <tr>
-                <td>X-Men</td>
-                <td>1h 7m</td>
-                <td>9.3</td>
-            </tr>
+            <% for (let i = 0; i < awards.length; i++) { %>
+                <tr>
+                    <td><%= awards[i].nev %></td>
+                    <td><%= awards[i].leiras %></td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
 </body>
 </html>
-
-
-<!--<div>-->
-<!--    <h2>Filmek:</h2>-->
-<!--    <button onclick="getFilms()">Megjelenítés</button>-->
-<!--    <ul>-->
-<!--    </ul>-->
-
-<!--</div>-->
-<!--<script>-->
-<!--    function getFilms() {-->
-<!--        let serverFilm = '';-->
-<!--        let serverURL = 'http://localhost:3001/filmek';-->
-
-<!--        axios.get('http://localhost:3001/filmek');-->
-
-<!--        console.log('A szerver által visszaadott film:' + serverFilm);-->
-<!--    }-->
-<!--</script>-->

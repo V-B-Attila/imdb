@@ -12,8 +12,7 @@ class FilmDAO{
     async read () {
         let sql = `SELECT * FROM film`;
         const result = await db.query(sql);
-        return result.rows;
-
+        return result.splice(0);
     }
 
     async update (movie) {

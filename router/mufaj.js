@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const MufajDAO = require('../DAO/mufajDAO');
+const MufajDAO = require('../dao/mufajDAO');
 const mufajDAO = new MufajDAO();
 
 

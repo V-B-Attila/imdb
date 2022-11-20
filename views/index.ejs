@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filmek</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>IMDB</h1>
+    <nav>
+        <div class="menu-box csoport">
+            <select id="menu" class="menu-class">
+                <option selected = "selected">Menu</option>
+            </select>
+        </div>
+
+        <div class="search-box csoport">
+            <input id="searchBar" type="text" placeholder="Search..">
+            <form>
+                <select id="kateg">
+                    <option selected = "selected">All</option>
+                    <option>Action</option>
+                    <option>Comedy</option>
+                    <option>Drama</option>
+                    <option>Fantasy</option>
+                    <option>Horror</option>
+                    <option>Sci-fi</option>
+                    <option>Sport</option>
+                    <option>Thriller</option>
+                </select>
+            </form>
+        </div>
+
+        <div class="signin-box csoport">
+            <a class="active" href="/">Films</a>
+            <a href="/awards" >Awards</a>
+            <a href="/genres">Genres</a>
+            <a href="/actors">Actors</a>
+        </div>
+    </nav>
+
+    <table>
+        <thead>
+            <tr>
+               <th>Title</th>
+               <th>Length</th>
+               <th>Release</th>
+               <th>Score ⭐</th>
+               <th>Edit</th>
+               <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i = 0; i < films.length; i++) { %>
+                <tr>
+                    <td><%= films[i].cim %></td>
+                    <td><%= films[i].hossz %></td>
+                    <td><%= films[i].megjelenes.toLocaleDateString("hu-HU") %></td>
+                    <td class="ertekeles"><%= films[i].ertekeles %> </td>
+                    <td class="icon">✏</td>
+                    <td class="icon">🗑</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>
+
+
+<!--<div>-->
+<!--    <h2>Filmek:</h2>-->
+<!--    <button onclick="getFilms()">Megjelenítés</button>-->
+<!--    <ul>-->
+<!--    </ul>-->
+
+<!--</div>-->
+<!--<script>-->
+<!--    function getFilms() {-->
+<!--        let serverFilm = '';-->
+<!--        let serverURL = 'http://localhost:3001/filmek';-->
+
+<!--        axios.get('http://localhost:3001/filmek');-->
+
+<!--        console.log('A szerver által visszaadott film:' + serverFilm);-->
+<!--    }-->
+<!--</script>-->

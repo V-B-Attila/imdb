@@ -1,5 +1,7 @@
 const db = require('../config/db');
 
+// TODO: rename dij -> dijak
+
 class DijDAO {
 
     async create (fee) {
@@ -9,11 +11,12 @@ class DijDAO {
     }
 
     async read() {
-        let sql = `SELECT * dij`
+        let sql = `SELECT * FROM dijak`
         const result = await db.query(sql);
-        return result.rows;
+        return result.splice(0);
     }
 
+    // TODO: fee (award) fee.nev fee.lerias
     async update(fee) {
         let sql = `UPDATE dij
                    SET nev = '${nev}',

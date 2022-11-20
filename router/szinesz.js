@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const SzineszDAO = require('../DAO/szineszDAO');
+const SzineszDAO = require('../dao/szineszDAO');
 const szineszDAO = new SzineszDAO();
 
 

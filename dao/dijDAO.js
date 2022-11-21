@@ -5,7 +5,7 @@ const db = require('../config/db');
 class DijDAO {
 
     async create (fee) {
-        let sql = `INSERT INTO dij (nev, leiras)
+        let sql = `INSERT INTO dijak (nev, leiras)
                     VALUES ('${nev}', '${leiras}')`
         return await db.query(sql);
     }
@@ -18,16 +18,16 @@ class DijDAO {
 
     // TODO: fee (award) fee.nev fee.lerias
     async update(fee) {
-        let sql = `UPDATE dij
+        let sql = `UPDATE dijak
                    SET nev = '${nev}',
                        leiras = '${leiras}'
-                   WHERE id = ${dij.id}`;
+                   WHERE id = ${dijak.id}`;
 
         await db.query(sql);
     }
 
     async delete(id) {
-        let sql = `DELETE FROM dij WHERE id = ${dij.id}`;
+        let sql = `DELETE FROM dijak WHERE id = ${dijak.id}`;
         await db.query(sql);
     }
 

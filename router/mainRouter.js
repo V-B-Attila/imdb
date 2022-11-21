@@ -7,6 +7,12 @@ const filmDao = new FilmDao();
 const AwardDao = require('../dao/dijDAO');
 const awardDao = new AwardDao();
 
+const GenreDao = require('../dao/mufajDAO');
+const genreDao = new GenreDao();
+
+const ActorsDao = require('../dao/szineszDAO');
+const actorsDao = new ActorsDao();
+
 router.get('/', async function (req, res) {
     const films = await filmDao.read();
 
@@ -23,6 +29,28 @@ router.get('/awards', async function (req, res) {
         res.render('error', {error: err.message});
     }
 });
+
+router.get('/genres', async function(req, res){
+    try{
+        const genres = await genreDao.read();
+        res.render('genres', {genres});
+    } catch (err) {
+        console.log('Valami hiba történt!');
+        console.error(err);
+        res.render('error', {error: err.message});
+    }
+});
+
+router.get('/actors', async function(req,res){
+    try {
+        const actors = await actorsDao.read();
+        res.render('actors', {actors});
+    } catch (err) {
+        console.log('Valami hiba történt!');
+        console.error(err)
+        res.render('error', {error: err.message});
+    }
+})
 
 // TODO: Genre and Actors READ implementation
 // + 1. ejs page (genres, actors)

@@ -2,7 +2,7 @@ const db = require('../config/db');
 
 class SzineszDAO {
 
-    async create (author) {
+    async create (actor) {
         let sql = `INSERT INTO szinesz (nev, kor)
                     VALUES ('${nev}', ${kor})`;
         return await db.query(sql);
@@ -11,10 +11,10 @@ class SzineszDAO {
     async read () {
         let sql = `SELECT * FROM szinesz`
         const result = await db.query(sql);
-        return result.rows;
+        return result.splice(0);
     }
 
-    async update (author) {
+    async update (actor) {
         let sql = `UPDATE szinesz
                    SET nev = '${szinesz.nev}',
                        kor = ${szinesz.kor}

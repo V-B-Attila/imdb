@@ -13,7 +13,7 @@ class MufajDAO {
     async read() {
         const sql = `SELECT * FROM mufaj`
         const result = await db.query(sql);
-        return result.rows;
+        return result.splice(0);
     }
 
     async update(gener) {

@@ -1,3 +1,7 @@
 table td {
     border-bottom: 1px solid orange;
 }
+
+.icons {
+    width: 60px;
+}

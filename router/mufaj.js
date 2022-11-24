@@ -28,10 +28,18 @@ router.put('mufaj', async function(req,res){
     res.status(200).send({message: 'Sikeres frissítés!'});
 })
 
-router.put('mufaj', async function(req, res){
-    const id = req.body;
-    await mufajDAO.delete(id);
-    res.status(200).send({message: 'Sikeres törlés!'});
+router.delete('/genres/:id', async function(req, res){
+    try {
+        console.log('Törlési Kérés a szerver felé!')
+        const id = req.params.id;
+        await mufajDAO.delete(id);
+        console.log(`Sikeres törlés Műfaj id=${id}`)
+        res.status(200).send({message: 'Sikeres törlés!', id});
+    } catch (err) {
+        console.log('Váratlan hiba történt');
+        console.log(err);
+        res.status(500).send(err.message);
+    }
 })
 
 module.exports = router;

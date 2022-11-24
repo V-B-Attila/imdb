@@ -24,10 +24,15 @@ class MufajDAO {
     }
 
     async delete(id) {
-        const sql = `DELETE FROM mufaj WHERE id = '${mufaj.id}'`
+        const sql = `DELETE FROM mufaj WHERE id = '${id}'`
         return await db.query(sql);
     }
 
+    async getById(id) {
+        const sql = `SELECT * FROM mufaj WHERE id = ${id}`
+        const result = await db.query(sql);
+        return result.splice(0)[0];
+    }
 }
 
 module.exports = MufajDAO;

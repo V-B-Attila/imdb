@@ -41,6 +41,34 @@ router.get('/genres', async function(req, res){
     }
 });
 
+router.get('/genres-update/:id', async function(req, res){
+    try{
+        const id = req.params.id;
+        const genre = await genreDao.getById(id);
+        res.render('genres-update', {genre});
+    } catch (err) {
+        console.log('Valami hiba történt!');
+        console.error(err);
+        res.render('error', {error: err.message});
+    }
+});
+
+router.post('/genres-update/:id', async function(req, res){
+    try {
+        const id = req.params.id;
+        const body = req.body;
+        console.log(body)
+        // const genre = await genreDao.getById(id);
+        // const body.genre = await genreDao.update(genre);
+        const genres = await genreDao.read();
+        res.render('genres', {genres});
+    } catch (err) {
+        console.log('Valami hiba történt!');
+        console.error(err);
+        res.render('error', {error: err.message});
+    }
+});
+
 router.get('/actors', async function(req,res){
     try {
         const actors = await actorsDao.read();

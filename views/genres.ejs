@@ -45,12 +45,16 @@
     <thead>
     <tr>
       <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
     </thead>
     <tbody>
       <% for (let i = 0; i < genres.length; i++) { %>
         <tr>
           <td><%= genres[i].nev %></td>
+          <td class="icon">✏</td>
+          <td class="icon">🗑</td>
         </tr>
       <% } %>
     </tbody>

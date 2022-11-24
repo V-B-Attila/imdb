@@ -46,13 +46,17 @@
     <tr>
         <th>Name</th>
         <th>Age</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
     <% for (let i = 0; i < actors.length; i++) { %>
         <tr>
             <td><%= actors[i].nev %></td>
-            <td><%= actors[i].kor %></td>
+            <td><%= actors[i].kor %>
+            <td class="icon">✏</td>
+            <td class="icon">🗑</td>
         </tr>
     <% } %>
     </tbody>

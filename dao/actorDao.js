@@ -1,10 +1,10 @@
 const db = require('../config/db');
 
-class SzineszDAO {
+class ActorDao {
 
     async create (actor) {
         let sql = `INSERT INTO szinesz (nev, kor)
-                    VALUES ('${nev}', ${kor})`;
+                    VALUES ('${actor.nev}', ${actor.kor})`;
         return await db.query(sql);
     }
 
@@ -16,17 +16,23 @@ class SzineszDAO {
 
     async update (actor) {
         let sql = `UPDATE szinesz
-                   SET nev = '${szinesz.nev}',
-                       kor = ${szinesz.kor}
-                   WHERE id = ${szinesz.id}`;
+                   SET nev = '${actor.nev}',
+                       kor = ${actor.kor}
+                   WHERE id = ${id}`;
         await db.query(sql);
     }
 
     async delete (id) {
-        let sql = `DELETE FROM szinesz WHERE id = ${szinesz.id}`
+        let sql = `DELETE FROM szinesz WHERE id = ${id}`
         return await db.query(sql);
+    }
+
+    async getById(id) {
+        const sql = `SELECT * FROM szinesz WHERE id = ${id}`
+        const result = await db.query(sql);
+        return result.splice(0)[0];
     }
 
 }
 
-module.exports = SzineszDAO;
+module.exports = ActorDao;

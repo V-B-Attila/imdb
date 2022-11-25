@@ -2,11 +2,11 @@ const db = require('../config/db');
 
 //TODO: replace result.rows -> result.splice(0);
 
-class MufajDAO {
+class GenreDao {
 
     async create (genre){
-        const sql = `INSERT INTO mufaj (nev,)
-                     VALUES ('${nev}')`;
+        const sql = `INSERT INTO mufaj (nev)
+                     VALUES ('${genre.nev}')`;
         return await db.query(sql);
     }
 
@@ -16,9 +16,9 @@ class MufajDAO {
         return result.splice(0);
     }
 
-    async update(gener) {
+    async update(genre) {
         const sql = `UPDATE mufaj
-                     SET nev = '${nev}'
+                     SET nev = '${genre.nev}'
                      WHERE id = ${id}`;
         await db.query(sql);
     }
@@ -35,4 +35,4 @@ class MufajDAO {
     }
 }
 
-module.exports = MufajDAO;
+module.exports = GenreDao;

@@ -21,7 +21,7 @@
         <input id="searchBar" type="text" placeholder="Search..">
         <form>
             <select id="kateg">
-                <option selected="selected">All</option>
+                <option selected="selected">genres</option>
                 <option>Action</option>
                 <option>Comedy</option>
                 <option>Drama</option>
@@ -67,12 +67,12 @@
         console.log(`Deleting Genre WHERE id=${genreId}`);
 
         // Ajax Routine
-        axios.delete(`http://localhost:3000/genres/${genreId}`)
+        axios.delete(`http://localhost:3001/genres/${genreId}`)
             .then((res) => {
                 console.log(res.data.message);
                 $(`#${res.data.id}`).remove();
             }).catch((res) => {
-                console.log('Váratlan hiba történt!');
+                console.log('Something bad happend..:(!');
                 console.log(res.response.data);
         })
     }

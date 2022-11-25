@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 </head>
 <body>
-<h1>Genres</h1>
+<h1>Actors</h1>
 <nav>
     <div class="menu-box csoport">
         <select id="menu" class="menu-class">
@@ -20,7 +20,7 @@
         <input id="searchBar" type="text" placeholder="Search..">
         <form>
             <select id="kateg">
-                <option selected = "selected">genres</option>
+                <option selected = "selected">Genres</option>
                 <option>Action</option>
                 <option>Comedy</option>
                 <option>Drama</option>
@@ -43,28 +43,28 @@
 
 
 <main>
-<!--    <form method="post" action="/genres-update/">-->
-        <label>
-            <input class="genre-name" type="text" value="<%= genre.nev %>" />
-        </label>
+    <!--    <form method="post" action="/actors-update/">-->
+    <label>
+        <input class="actor-name" type="text" value="<%= actor.nev %>" />
+        <input class="actor-age" type="text" value="<%= actor.kor %>" />
+    </label>
 
-        <div class="button-container">
-            <button onclick="updateGenre(<%= genre.id %>, JSON.stringify(<% genre %>))">✔</button>
-            <button><a href="/genres">x</a></button>
-        </div>
+    <div class="button-container">
+        <button onclick="updateActor(<%= actor.id %>, JSON.stringify(<% actor %>))">✔</button>
+        <button><a href="/actors">x</a></button>
+    </div>
     <script>
-        function updateGenre(id, genre) {
-            axios.post(`http://localhost:3001/genres-update/${id}`, {genre})
+        function updateActors(id, actor) {
+            axios.post(`http://localhost:3001/actors-update/${id}`, {actor})
                 .then(()=>{
-                    window.location('http://localhost:3001/genres');
+                    window.location('http://localhost:3001/actors');
                 }).catch((response)=> {
                 console.log(response)
             })
         }
 
-
     </script>
-<!--    </form>-->
+    <!--    </form>-->
 </main>
 
 </body>

@@ -1,10 +1,10 @@
 const db = require('../config/db');
 
-class FilmDAO{
+class FilmDao {
 
     async create (movie){
         let sql = `INSERT INTO film (cim, megjelenes, ertekeles, hossz)
-                   VALUES ('${cim}', '${megjelenes}', '${ertekeles}', '${hossz}')`;
+                   VALUES ('${movie.cim}', '${movie.megjelenes}', '${movie.ertekeles}', '${movie.hossz}')`;
 
         return awaitdb.query(sql);
     }
@@ -17,20 +17,20 @@ class FilmDAO{
 
     async update (movie) {
         let sql = `UPDATE film
-                   SET cim        = '${film.cim}',
-                       megjelenes = '${film.megjelenes}',
-                       ertekeles  = '${film.ertekeles}',
-                       hossz      = '${film.hissz}'
-                   WHERE id = ${film.id}`;
+                   SET cim        = '${movie.cim}',
+                       megjelenes = '${movie.megjelenes}',
+                       ertekeles  = '${movie.ertekeles}',
+                       hossz      = '${movie.hissz}'
+                   WHERE id = ${id}`;
         await db.query(sql);
     }
 
     async delete (id) {
-        let sql = `DELETE FROM film WHERE id = ${film.id}`;
+        let sql = `DELETE FROM film WHERE id = ${id}`;
 
         return await db.query(sql);
     }
 
 }
 
-module.exports = FilmDAO;
+module.exports = FilmDao;

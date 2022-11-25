@@ -19,7 +19,7 @@
             <input id="searchBar" type="text" placeholder="Search..">
             <form>
                 <select id="kateg">
-                    <option selected = "selected">All</option>
+                    <option selected = "selected">genres</option>
                     <option>Action</option>
                     <option>Comedy</option>
                     <option>Drama</option>
@@ -58,12 +58,29 @@
                     <td><%= films[i].hossz %></td>
                     <td><%= films[i].megjelenes.toLocaleDateString("hu-HU") %></td>
                     <td class="ertekeles"><%= films[i].ertekeles %> </td>
-                    <td class="icon">✏</td>
-                    <td class="icon">🗑</td>
+                    <td class="icon icons"><a href="/films-update/<%= films[i].id %>">✏</a></td>
+                    <td class="icon icons" onclick="deleteFilm(<%= films[i].id %>)">🗑</td>
                 </tr>
             <% } %>
         </tbody>
     </table>
+
+    <!-- Javascript Call -->
+    <script>
+        function deleteFilm(filmId) {
+            console.log(`Deleting Film WHERE id=${filmId}`);
+
+            // Ajax Routine
+            axios.delete(`http://localhost:3001/films/${filmId}`)
+                .then((res) => {
+                    console.log(res.data.message);
+                    $(`#${res.data.id}`).remove();
+                }).catch((res) => {
+                console.log('Something bad happend..:(!');
+                // console.log(res.response.data);
+            })
+        }
+    </script>
 </body>
 </html>
 

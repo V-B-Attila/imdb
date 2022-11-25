@@ -20,7 +20,7 @@
             <input id="searchBar" type="text" placeholder="Search..">
             <form>
                 <select id="kateg">
-                    <option selected = "selected">All</option>
+                    <option selected = "selected">genres</option>
                     <option>Action</option>
                     <option>Comedy</option>
                     <option>Drama</option>
@@ -55,11 +55,28 @@
                 <tr>
                     <td><%= awards[i].nev %></td>
                     <td><%= awards[i].leiras %></td>
-                    <td class="icon">✏</td>
-                    <td class="icon">🗑</td>
+                    <td class="icon icons"><a href="/awards-update/<%= awards[i].id %>">✏</a></td>
+                    <td class="icon icons" onclick="deleteAward(<%= awards[i].id %>)">🗑</td>
                 </tr>
             <% } %>
         </tbody>
     </table>
+
+    <!-- Javascript Call -->
+    <script>
+        function deleteAward(awardId) {
+            console.log(`Deleting Award WHERE id=${awardId}`);
+
+            // Ajax Routine
+            axios.delete(`http://localhost:3001/awards/${awardId}`)
+                .then((res) => {
+                    console.log(res.data.message);
+                    $(`#${res.data.id}`).remove();
+                }).catch((res) => {
+                console.log('Something bad happend..:(!');
+                console.log(res.response.data);
+            })
+        }
+    </script>
 </body>
 </html>

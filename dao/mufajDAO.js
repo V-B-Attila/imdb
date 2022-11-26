@@ -16,7 +16,7 @@ class MufajDAO {
         return result.splice(0);
     }
 
-    async update(gener) {
+    async update({nev, id}) {
         const sql = `UPDATE mufaj
                      SET nev = '${nev}'
                      WHERE id = ${id}`;

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/awards.css">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <body>
     <h1>Awards 🏆</h1>
@@ -52,7 +54,7 @@
         </thead>
         <tbody>
             <% for (let i = 0; i < awards.length; i++) { %>
-                <tr>
+                <tr id = "<%= awards[i].id %>">
                     <td><%= awards[i].nev %></td>
                     <td><%= awards[i].leiras %></td>
                     <td class="icon icons"><a href="/awards-update/<%= awards[i].id %>">✏</a></td>

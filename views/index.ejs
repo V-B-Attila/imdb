@@ -5,6 +5,8 @@
     <title>Filmek</title>
     <link rel="stylesheet" href="/style/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <body>
     <h1>IMDB</h1>
@@ -53,7 +55,7 @@
         </thead>
         <tbody>
             <% for (let i = 0; i < films.length; i++) { %>
-                <tr>
+                <tr id="<%= films[i].id %>">
                     <td><%= films[i].cim %></td>
                     <td><%= films[i].hossz %></td>
                     <td><%= films[i].megjelenes.toLocaleDateString("hu-HU") %></td>
@@ -69,6 +71,8 @@
     <script>
         function deleteFilm(filmId) {
             console.log(`Deleting Film WHERE id=${filmId}`);
+
+
 
             // Ajax Routine
             axios.delete(`http://localhost:3001/films/${filmId}`)

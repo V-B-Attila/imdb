@@ -63,8 +63,11 @@
 
 <!-- Javascript Call -->
 <script>
+
     function deleteGenre(genreId) {
         console.log(`Deleting Genre WHERE id=${genreId}`);
+
+
 
         // Ajax Routine
         axios.delete(`http://localhost:3001/genres/${genreId}`)

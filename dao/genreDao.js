@@ -19,7 +19,7 @@ class GenreDao {
     async update(genre) {
         const sql = `UPDATE mufaj
                      SET nev = '${genre.nev}'
-                     WHERE id = ${id}`;
+                     WHERE id = ${genre.id}`;
         await db.query(sql);
     }
 

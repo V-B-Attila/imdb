@@ -34,8 +34,8 @@ class FilmDao {
                    SET cim        = '${movie.cim}',
                        megjelenes = '${movie.megjelenes}',
                        ertekeles  = '${movie.ertekeles}',
-                       hossz      = '${movie.hissz}'
-                   WHERE id = ${id}`;
+                       hossz      = '${movie.hossz}'
+                   WHERE id = ${movie.id}`;
         await db.query(sql);
     }
 
@@ -45,6 +45,11 @@ class FilmDao {
         return await db.query(sql);
     }
 
+    async getById(id) {
+        const sql = `SELECT * FROM film WHERE id = ${id}`
+        const result = await db.query(sql);
+        return result.splice(0)[0];
+    }
 }
 
 module.exports = FilmDao;

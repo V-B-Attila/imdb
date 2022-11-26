@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>Update Genres</h1>
+<h1>Update Films</h1>
 <nav>
     <div class="menu-box csoport">
         <select id="menu" class="menu-class">
@@ -46,22 +46,41 @@
 <main>
         <form>
             <label>
-                Name:
-                <input class="genre-name" type="text" value="<%= genre.nev %>" />
+                <span>Title:</span>
+                <input class="title" type="text" value="<%= film.cim %>" />
+            </label>
+            <label>
+                <span>Release:</span>
+                <input class="release" type="text" value="<%= film.megjelenes.toLocaleDateString('en-ZA') %>" />
+            </label>
+            <label>
+                <span>Score:</span>
+                <input class="score" type="text" value="<%= film.ertekeles %>" />
+            </label>
+            <label>
+                <span>Duration:</span>
+                <input class="duration" type="text" value="<%= film.hossz %>" />
             </label>
 
             <div class="button-container">
-                <button onclick="updateGenre(<%= genre.id %>)">✔</button>
+                <button onclick="updateFilm(<%= film.id %>)">✔</button>
                 <button><a href="/genres">x</a></button>
             </div>
         </form>
 
     <script>
-        function updateGenre(id) {
-            let nev = $('.genre-name').val();
-            axios.post(`http://localhost:3001/genres-update`, {genre: {id, nev}})
+        function updateFilm(id) {
+            let updatedFilm = {
+                id,
+                cim: $('.title').val(),
+                megjelenes: $('.release').val(),
+                ertekeles: $('.score').val(),
+                hossz: $('.duration').val(),
+            }
+
+            axios.post(`http://localhost:3001/film-update`, {updatedFilm})
                 .then(()=>{
-                    window.location.href = "/genres";
+                    window.location.href = "/";
                 }).catch((response)=> {
                 console.log(response)
             })

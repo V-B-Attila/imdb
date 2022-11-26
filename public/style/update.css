@@ -6,13 +6,24 @@
     justify-content: center;
 }
 
-form {
+main form {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 10px;
 
+    width: 400px;
+    margin: auto;
+
     /*flex-direction: column;*/
     /*align-items: center;*/
+}
+
+main form label {
+    margin: auto;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
 }
 
 form input {

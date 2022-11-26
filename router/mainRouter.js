@@ -53,15 +53,11 @@ router.get('/genres-update/:id', async function(req, res){
     }
 });
 
-router.post('/genres-update/:id', async function(req, res){
+router.post('/genres-update', async function(req, res){
     try {
-        const id = req.params.id;
-        const body = req.body;
-        console.log(body)
-        // const genre = await actorDao.getById(id);
-        // const body.genre = await genreDao.update(genre);
-        const genres = await genreDao.read();
-        res.render('genres', {genres});
+        let updatedGenre = req.body.genre;
+        await genreDao.update(updatedGenre);
+        res.status(200).send({message: 'update ok'});
     } catch (err) {
         console.log('Something bad happend..:(');
         console.error(err);

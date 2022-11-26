@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/update.css">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>Genres</h1>
+<h1>Update Genres</h1>
 <nav>
     <div class="menu-box csoport">
         <select id="menu" class="menu-class">
@@ -43,26 +44,28 @@
 
 
 <main>
-<!--    <form method="post" action="/genres-update/">-->
-        <label>
-            <input class="genre-name" type="text" value="<%= genre.nev %>" />
-        </label>
+        <form>
+            <label>
+                Nev:
+                <input class="genre-name" type="text" value="<%= genre.nev %>" />
+            </label>
 
-        <div class="button-container">
-            <button onclick="updateGenre(<%= genre.id %>, JSON.stringify(<% genre %>))">✔</button>
-            <button><a href="/genres">x</a></button>
-        </div>
+            <div class="button-container">
+                <button onclick="updateGenre(<%= genre.id %>)">✔</button>
+                <button><a href="/genres">x</a></button>
+            </div>
+        </form>
+
     <script>
-        function updateGenre(id, genre) {
-            axios.post(`http://localhost:3001/genres-update/${id}`, {genre})
+        function updateGenre(id) {
+            let nev = $('.genre-name').val();
+            axios.post(`http://localhost:3000/genres-update`, {genre: {id, nev}})
                 .then(()=>{
-                    window.location('http://localhost:3001/genres');
+                    window.location.href = "/genres";
                 }).catch((response)=> {
                 console.log(response)
             })
         }
-
-
     </script>
 <!--    </form>-->
 </main>

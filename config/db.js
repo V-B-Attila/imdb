@@ -5,7 +5,6 @@ const pool = createPool({
     user: "root",
     password: "",
     database: "imdb",
-    connectionLimit: 10
 })
 
 module.exports = pool;

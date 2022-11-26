@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Filmek</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/actors.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</head>
+<body>
+<h1>Actors</h1>
+<nav>
+    <div class="menu-box csoport">
+        <select id="menu" class="menu-class">
+            <option selected = "selected">Menu</option>
+        </select>
+    </div>
+
+    <div class="search-box csoport">
+        <input id="searchBar" type="text" placeholder="Search..">
+        <form>
+            <select id="kateg">
+                <option selected = "selected">genres</option>
+                <option>Action</option>
+                <option>Comedy</option>
+                <option>Drama</option>
+                <option>Fantasy</option>
+                <option>Horror</option>
+                <option>Sci-fi</option>
+                <option>Sport</option>
+                <option>Thriller</option>
+            </select>
+        </form>
+    </div>
+
+    <div class="signin-box csoport">
+        <a href="/">Films</a>
+        <a href="/awards" >Awards</a>
+        <a href="/genres">Genres</a>
+        <a class="active" href="/actors">Actors</a>
+    </div>
+</nav>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for (let i = 0; i < actors.length; i++) { %>
+        <tr id="<%= actors[i].id %>">
+            <td><%= actors[i].nev %></td>
+            <td><%= actors[i].kor %>
+            <td class="icon icons"><a href="/actors-update/<%= actors[i].id %>">✏</a></td>
+            <td class="icon icons" onclick="deleteActors(<%= actors[i].id %>)">🗑</td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+<!-- Javascript Call -->
+<script>
+
+
+    function deleteActors(actorId) {
+        console.log(`Deleting Actor WHERE id=${actorId}`);
+
+        // Ajax Routine
+        axios.delete(`http://localhost:3001/actors/${actorId}`)
+            .then((res) => {
+                console.log(res.data.message);
+                $(`#${res.data.id}`).remove();
+            }).catch((res) => {
+            console.log('Something bad happend..:(!');
+            console.log(res.response.data);
+        })
+    }
+</script>
+
+</body>
+</html>

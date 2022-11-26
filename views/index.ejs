@@ -48,6 +48,7 @@
                <th>Title</th>
                <th>Length</th>
                <th>Release</th>
+               <th>Genre</th>
                <th>Score ⭐</th>
                <th>Edit</th>
                <th>Delete</th>
@@ -59,6 +60,7 @@
                     <td><%= films[i].cim %></td>
                     <td><%= films[i].hossz %></td>
                     <td><%= films[i].megjelenes.toLocaleDateString("hu-HU") %></td>
+                    <td><%= films[i].genres %></td>
                     <td class="ertekeles"><%= films[i].ertekeles %> </td>
                     <td class="icon icons"><a href="/films-update/<%= films[i].id %>">✏</a></td>
                     <td class="icon icons" onclick="deleteFilm(<%= films[i].id %>)">🗑</td>

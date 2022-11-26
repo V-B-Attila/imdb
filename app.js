@@ -23,6 +23,16 @@ app.use(szineszRouter);
 app.use(dijRouter);
 app.use(filmRouter);
 
-app.listen(3001, function() {
+app.listen(3001, function () {
     console.log('Server is listening at: http://localhost:3001');
 });
+
+// const FilmDao = require('./dao/filmDao');
+// const filmDao = new FilmDao();
+//
+// filmDao.getFilmGenres(4).then((genres) => {
+//     console.log('Sikeres lekérdezés!);');
+//     console.log(genres)
+// }).catch((error) => {
+//     console.log(error);
+// })

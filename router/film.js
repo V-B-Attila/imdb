@@ -35,7 +35,6 @@ router.get('/films-update/:id', async function(req, res){
         res.render('error', {error: err.message});
     }
 });
-
 // endpoint
 router.post('/film-update', async function (req, res){
     try {
@@ -49,6 +48,33 @@ router.post('/film-update', async function (req, res){
     }
 
 })
+
+// /films-create
+router.get('/films-create', async function(req, res){
+    res.render('film-create');
+});
+router.post('/film-create', async function (req, res){
+    try {
+        console.log('Create film!');
+        const film = req.body.film;
+        await filmDAO.create(film);
+
+        const filmId = (await filmDAO.getLatestFilm()).id;
+
+        // Create classifications
+        const genres = req.body.genres;
+        const genresList = genres.split(', ');
+        await filmDAO.addGenresToFilm(filmId, genresList);
+
+        res.status(200).send({message: 'Film created is successfully!'});
+    } catch(e) {
+        console.log(e);
+        res.status(500).send('Unexpected error!');
+    }
+
+})
+
+
 
 router.delete('/films/:id', async function(req, res){
     try {

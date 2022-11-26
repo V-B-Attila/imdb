@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>Update Films</h1>
+<h1>Create Films</h1>
 <nav>
     <div class="menu-box csoport">
         <select id="menu" class="menu-class">
@@ -47,43 +47,50 @@
         <form>
             <label>
                 <span>Title:</span>
-                <input class="title" type="text" value="<%= film.cim %>" />
+                <input class="title" type="text" />
             </label>
             <label>
                 <span>Release:</span>
-                <input class="release" type="text" value="<%= film.megjelenes.toLocaleDateString('en-ZA') %>" />
+                <input class="release" type="text" />
             </label>
             <label>
                 <span>Score:</span>
-                <input class="score" type="text" value="<%= film.ertekeles %>" />
+                <input class="score" type="text" />
             </label>
             <label>
                 <span>Duration:</span>
-                <input class="duration" type="text" value="<%= film.hossz %>" />
+                <input class="duration" type="text" />
+            </label>
+            <label>
+                <span>Genres:</span>
+                <input class="genres" type="text" />
             </label>
 
             <div class="button-container">
-                <button onclick="updateFilm(<%= film.id %>)">✔</button>
+                <button onclick="createFilm()">✔</button>
                 <button><a href="/genres">x</a></button>
             </div>
         </form>
 
     <script>
-        function updateFilm(id) {
-            let updatedFilm = {
-                id,
+        function createFilm() {
+            let film = {
                 cim: $('.title').val(),
                 megjelenes: $('.release').val(),
                 ertekeles: $('.score').val(),
                 hossz: $('.duration').val(),
             }
 
-            axios.post(`http://localhost:3001/film-update`, {updatedFilm})
-                .then(() => {
-                    alert('Film update ok!')
-                }).catch((response) => {
+            let body = {
+                film,
+                genres: $('.genres').val()
+            };
+            axios.post(`http://localhost:3001/film-create`, body)
+                .then(()=>{
+                    alert('Film created successfully!');
+                }).catch((response)=> {
                 console.log(response)
-            });
+            })
         }
     </script>
 <!--    </form>-->

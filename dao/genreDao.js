@@ -33,6 +33,12 @@ class GenreDao {
         const result = await db.query(sql);
         return result.splice(0)[0];
     }
+
+    async getIdByName(genre) {
+        const sql = `SELECT id FROM mufaj WHERE mufaj.nev = '${genre}'`
+        const result = await db.query(sql);
+        return result.splice(0)[0];
+    }
 }
 
 module.exports = GenreDao;

@@ -1,5 +1,8 @@
 const db = require('../config/db');
 
+const GenreDao = require('./genreDao');
+const genreDao = new GenreDao();
+
 class FilmDao {
 
     async create(movie) {
@@ -47,6 +50,26 @@ class FilmDao {
 
     async getById(id) {
         const sql = `SELECT * FROM film WHERE id = ${id}`
+        const result = await db.query(sql);
+        return result.splice(0)[0];
+    }
+
+    async addGenresToFilm(film_id, genresList) {
+        for (const genre of genresList) {
+            const genre_id = (await genreDao.getIdByName(genre)).id;
+            await this.createClassification(film_id, genre_id);
+        }
+    }
+
+    async createClassification(film_id, mufaj_id) {
+        let sql = `INSERT INTO besorolas (film_id, mufaj_id)
+                   VALUES ('${film_id}', '${mufaj_id}')`;
+
+        return await db.query(sql);
+    }
+
+    async getLatestFilm() {
+        const sql = `SELECT id FROM film ORDER BY ID DESC`
         const result = await db.query(sql);
         return result.splice(0)[0];
     }

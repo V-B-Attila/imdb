@@ -57,7 +57,7 @@
         function updateActors(id, actor) {
             axios.post(`http://localhost:3001/actors-update/${id}`, {actor})
                 .then(()=>{
-                    window.location('http://localhost:3001/actors');
+                    alert('Actor update ok!')
                 }).catch((response)=> {
                 console.log(response)
             })

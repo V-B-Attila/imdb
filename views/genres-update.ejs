@@ -60,11 +60,11 @@
         function updateGenre(id) {
             let nev = $('.genre-name').val();
             axios.post(`http://localhost:3001/genres-update`, {genre: {id, nev}})
-                .then(()=>{
-                    window.location.href = "/genres";
-                }).catch((response)=> {
+                .then(() => {
+                    alert('Genre update ok!')
+                }).catch((response) => {
                 console.log(response)
-            })
+            });
         }
     </script>
 <!--    </form>-->

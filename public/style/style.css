@@ -91,3 +91,8 @@ nav div {
     justify-content: center;
     gap: 20px;
 }
+
+.diagram {
+    width: 70%;
+    margin: auto;
+}

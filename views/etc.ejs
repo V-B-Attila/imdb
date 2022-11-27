@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Etc</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/awards.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+<h1>Etc</h1>
+<nav>
+    <div class="signin-box csoport">
+        <a href="/">Films</a>
+        <a href="/awards">Awards</a>
+        <a href="/genres">Genres</a>
+        <a href="/actors">Actors</a>
+        <a href="/awards-list">Awards List</a>
+        <a class="active" href="/etc">Etc</a>
+    </div>
+</nav>
+
+    <!--  Nested queries -->
+    <h2>Best films</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let i = 0; i < query3.length; i++) { %>
+            <tr id="<%= query3[i].id %>">
+                <td><%= query3[i].cim %></td>
+                <td><%= query3[i].ertekeles %></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <h2>Score average per genre</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Award</th>
+            <th>Score Avg</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let i = 0; i < query2.length; i++) { %>
+            <tr id="<%= query2[i].id %>">
+                <td><%= query2[i].award %></td>
+                <td><%= query2[i].average.toFixed(2) %></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <h2>Number of award for films between 2020 and 2022</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Awards</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let i = 0; i < query1.length; i++) { %>
+            <tr id="<%= query1[i].id %>">
+                <td><%= query1[i].cim %></td>
+                <td><%= query1[i].awards %></td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <h2>Diagram </h2>
+    <div class="diagram">
+        <canvas id="myChart"></canvas>
+    </div>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    const scores2 = <%- JSON.stringify(scores) %>;
+    const scoreValues2 = <%- JSON.stringify(scoreValues) %>;
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: scores2,
+            datasets: [{
+                label: 'Occurence',
+                data: scoreValues2,
+                borderWidth: 1,
+                backgroundColor: 'goldenrod'
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

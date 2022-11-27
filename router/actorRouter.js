@@ -8,7 +8,7 @@ const actorDao = new ActorDao();
 router.get('/actors', async function(req,res){
     try {
         const actors = await actorDao.read();
-        res.render('actors', {actors});
+        res.render('actor/actors', {actors});
     } catch (err) {
         console.log('Something bad happend..:(!');
         console.error(err)
@@ -18,7 +18,7 @@ router.get('/actors', async function(req,res){
 
 // Create
 router.get('/actor-create', async function(req, res){
-    res.render('actor-create');
+    res.render('actor/actor-create');
 });
 router.post('/actor-create', async function (req, res){
     try {
@@ -39,7 +39,7 @@ router.get('/actors-update/:id', async function(req, res){
     try{
         const id = req.params.id;
         const film = await actorDao.getById(id);
-        res.render('actor-update', {film});
+        res.render('actor/actor-update', {film});
     } catch (err) {
         console.log('Something bad happend!');
         console.error(err);

@@ -15,7 +15,7 @@ router.get('/films-update/:id', async function(req, res){
     try{
         const id = req.params.id;
         const film = await filmDao.getById(id);
-        res.render('film-update', {film});
+        res.render('film/film-update', {film});
     } catch (err) {
         console.log('Something bad happend!');
         console.error(err);
@@ -37,7 +37,7 @@ router.post('/film-update', async function (req, res){
 
 // /films-create
 router.get('/films-create', async function(req, res){
-    res.render('film-create');
+    res.render('film/film-create');
 });
 router.post('/film-create', async function (req, res){
     try {

@@ -8,7 +8,7 @@ const awardDao = new AwardDao();
 router.get('/awards', async function(req, res){
     try{
         const awards = await awardDao.read();
-        res.render('awards', {awards});
+        res.render('award/awards', {awards});
     } catch (err) {
         console.log('Something bad happend!');
         console.error(err);
@@ -23,7 +23,7 @@ router.get('/awards-update/:id', async function(req, res){
         const award = await awardDao.getById(id);
         await awardDao.update(award);
 
-        res.render('award-update', {award});
+        res.render('award/award-update', {award});
     } catch (err) {
         console.log('Something bad happend!');
         console.error(err);
@@ -33,7 +33,7 @@ router.get('/awards-update/:id', async function(req, res){
 
 // Create
 router.get('/award-create', async function(req, res){
-    res.render('award-create');
+    res.render('award/award-create');
 });
 router.post('/award-create', async function (req, res){
     try {

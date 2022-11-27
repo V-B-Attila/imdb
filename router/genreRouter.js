@@ -8,7 +8,7 @@ const genreDao = new GenreDao();
 router.get('/genres', async function(req, res){
     try{
         const genres = await genreDao.read();
-        res.render('genres', {genres});
+        res.render('genre/genres', {genres});
     } catch (err) {
         console.log('Something bad happend!');
         console.error(err);
@@ -18,7 +18,7 @@ router.get('/genres', async function(req, res){
 
 // Create
 router.get('/genre-create', async function(req, res){
-    res.render('genre-create');
+    res.render('genre/genre-create');
 });
 router.post('/genre-create', async function (req, res){
     try {
@@ -46,7 +46,7 @@ router.get('/genres-update/:id', async function(req, res){
     try{
         const id = req.params.id;
         const genre = await genreDao.getById(id);
-        res.render('genres-update', {genre});
+        res.render('genre/genres-update', {genre});
     } catch (err) {
         console.log('Something bad happend!');
         console.error(err);

@@ -56,22 +56,18 @@
 
         <div class="button-container">
             <button onclick="createAward()">✔</button>
-            <button><a href="/award">x</a></button>
+            <button><a href="/awards">x</a></button>
         </div>
     </form>
 
     <script>
         function createAward() {
             let award = {
-                nev: $('.title').val(),
-                description: $('.release').val(),
+                nev: $('.name').val(),
+                leiras: $('.description').val(),
             }
 
-            // let body = {
-            //     film,
-            //     genres: $('.genres').val()
-            // };
-            axios.post(`http://localhost:3001/award-create`, body)
+            axios.post(`http://localhost:3001/award-create`, {award})
                 .then(()=>{
                     alert('Award created successfully!');
                 }).catch((response)=> {

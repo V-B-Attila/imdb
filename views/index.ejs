@@ -75,8 +75,6 @@
         function deleteFilm(filmId) {
             console.log(`Deleting Film WHERE id=${filmId}`);
 
-
-
             // Ajax Routine
             axios.delete(`http://localhost:3001/films/${filmId}`)
                 .then((res) => {

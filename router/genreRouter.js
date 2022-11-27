@@ -22,17 +22,8 @@ router.get('/genre-create', async function(req, res){
 });
 router.post('/genre-create', async function (req, res){
     try {
-        console.log('Genre film!');
-        const genre = req.body.film;
-        await genreDao.create(film);
-
-        // const genreId = (await genreDao.getLatestFilm()).id;
-
-        // Create classifications
-        // const genres = req.body.genres;
-        // const genresList = genres.split(', ');
-        // await filmDAO.addGenresToFilm(filmId, genresList);
-
+        const genre = req.body.genre;
+        await genreDao.create(genre);
         res.status(200).send({message: 'Genre created is successfully!'});
     } catch(e) {
         console.log(e);
@@ -43,7 +34,7 @@ router.post('/genre-create', async function (req, res){
 
 // Update
 router.get('/genres-update/:id', async function(req, res){
-    try{
+    try {
         const id = req.params.id;
         const genre = await genreDao.getById(id);
         res.render('genre/genres-update', {genre});
@@ -66,6 +57,17 @@ router.post('/genres-update', async function(req, res){
 });
 
 // Delete
+router.delete('/genres/:id', async function(req, res){
+    try {
+        const id = req.params.id;
+        await genreDao.delete(id);
+        res.status(200).send({message: 'Successful deletion!', id});
+    } catch (err) {
+        console.log('Something bad happened..:(!');
+        console.log(err);
+        res.status(500).send(err.message);
+    }
+})
 
 
 module.exports = router;

@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <title>Filmek</title>
+    <title>Create - Genre</title>
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/update.css">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
@@ -10,39 +10,7 @@
 </head>
 <body>
 <h1>Create Genre</h1>
-<nav>
-    <div class="menu-box csoport">
-        <select id="menu" class="menu-class">
-            <option selected = "selected">Menu</option>
-        </select>
-    </div>
-
-    <div class="search-box csoport">
-        <input id="searchBar" type="text" placeholder="Search..">
-        <form>
-            <select id="kateg">
-                <option selected = "selected">genres</option>
-                <option>Action</option>
-                <option>Comedy</option>
-                <option>Drama</option>
-                <option>Fantasy</option>
-                <option>Horror</option>
-                <option>Sci-fi</option>
-                <option>Sport</option>
-                <option>Thriller</option>
-            </select>
-        </form>
-    </div>
-
-    <div class="signin-box csoport">
-        <a href="/">Films</a>
-        <a href="/awards" >Awards</a>
-        <a href="/genres">Genres</a>
-        <a href="/actors">Actors</a>
-    </div>
-</nav>
-
-
+<nav></nav>
 <main>
     <form>
         <label>
@@ -59,14 +27,10 @@
     <script>
         function createGenre() {
             let genre = {
-                nev: $('.title').val(),
+                nev: $('.name').val(),
             }
 
-            // let body = {
-            //     film,
-            //     genres: $('.genres').val()
-            // };
-            axios.post(`http://localhost:3001/genre-create`, body)
+            axios.post(`http://localhost:3001/genre-create`, {genre})
                 .then(()=>{
                     alert('Genre created successfully!');
                 }).catch((response)=> {

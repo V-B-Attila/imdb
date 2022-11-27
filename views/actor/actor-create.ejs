@@ -10,39 +10,7 @@
 </head>
 <body>
 <h1>Create Actors</h1>
-<nav>
-    <div class="menu-box csoport">
-        <select id="menu" class="menu-class">
-            <option selected = "selected">Menu</option>
-        </select>
-    </div>
-
-    <div class="search-box csoport">
-        <input id="searchBar" type="text" placeholder="Search..">
-        <form>
-            <select id="kateg">
-                <option selected = "selected">genres</option>
-                <option>Action</option>
-                <option>Comedy</option>
-                <option>Drama</option>
-                <option>Fantasy</option>
-                <option>Horror</option>
-                <option>Sci-fi</option>
-                <option>Sport</option>
-                <option>Thriller</option>
-            </select>
-        </form>
-    </div>
-
-    <div class="signin-box csoport">
-        <a href="/">Films</a>
-        <a href="/awards" >Awards</a>
-        <a href="/genres">Genres</a>
-        <a href="/actors">Actors</a>
-    </div>
-</nav>
-
-
+<nav></nav>
 <main>
     <form>
         <label>
@@ -56,22 +24,18 @@
 
         <div class="button-container">
             <button onclick="createActor()">✔</button>
-            <button><a href="/actor">x</a></button>
+            <button><a href="/actors">x</a></button>
         </div>
     </form>
 
     <script>
         function createActor() {
             let actor = {
-                nev: $('.title').val(),
-                kor: $('.release').val(),
+                nev: $('.name').val(),
+                kor: $('.age').val(),
             }
 
-            // let body = {
-            //     film,
-            //     genres: $('.genres').val()
-            // };
-            axios.post(`http://localhost:3001/actor-create`, body)
+            axios.post(`http://localhost:3001/actor-create`, {actor})
                 .then(()=>{
                     alert('Actor created successfully!');
                 }).catch((response)=> {

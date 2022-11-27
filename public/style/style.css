@@ -31,13 +31,6 @@ nav {
     height: 100%;
 }
 
-.signin-box {
-    display: flex;
-
-    justify-content: end;
-    gap: 20px;
-}
-
 table {
     margin: auto;
     border: 1px solid orange;
@@ -86,4 +79,15 @@ a:hover {
 
 .create {
     margin-left: 100px;
+}
+
+nav div {
+    margin: auto;
+    /*border: 1px solid blue;*/
+}
+
+.signin-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }

@@ -18,7 +18,7 @@ class ActorDao {
         let sql = `UPDATE szinesz
                    SET nev = '${actor.nev}',
                        kor = ${actor.kor}
-                   WHERE id = ${id}`;
+                   WHERE id = ${actor.id}`;
         await db.query(sql);
     }
 

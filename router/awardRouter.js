@@ -30,6 +30,16 @@ router.get('/awards-update/:id', async function(req, res){
         res.render('error', {error: err.message});
     }
 });
+router.post('/award-update', async function (req, res){
+    try {
+        const award = req.body.award;
+        await awardDao.update(award);
+        res.status(200).send({message: 'Award update was successful!'});
+    } catch(e) {
+        console.log(e);
+        res.status(500).send('Unexpected error!');
+    }
+})
 
 // Create
 router.get('/award-create', async function(req, res){
@@ -37,10 +47,7 @@ router.get('/award-create', async function(req, res){
 });
 router.post('/award-create', async function (req, res){
     try {
-        console.log('POST - /award-create');
         await awardDao.create(req.body.award);
-        console.log(req.body.award);
-
         res.status(200).send({message: 'Award created is successfully!'});
     } catch(e) {
         console.log(e);

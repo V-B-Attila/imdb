@@ -19,9 +19,9 @@ class AwardDao {
     // TODO: fee (award) fee.nev fee.lerias
     async update(award) {
         let sql = `UPDATE dijak
-                   SET nev = '${award.nev}',
+                   SET nev    = '${award.nev}',
                        leiras = '${award.leiras}'
-                   WHERE id = ${id}`;
+                   WHERE id = ${award.id}`;
 
         await db.query(sql);
     }

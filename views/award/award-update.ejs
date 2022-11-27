@@ -10,37 +10,7 @@
 </head>
 <body>
 <h1>Update Award</h1>
-<nav>
-    <div class="menu-box csoport">
-        <select id="menu" class="menu-class">
-            <option selected = "selected">Menu</option>
-        </select>
-    </div>
-
-    <div class="search-box csoport">
-        <input id="searchBar" type="text" placeholder="Search..">
-        <form>
-            <select id="kateg">
-                <option selected = "selected">genres</option>
-                <option>Action</option>
-                <option>Comedy</option>
-                <option>Drama</option>
-                <option>Fantasy</option>
-                <option>Horror</option>
-                <option>Sci-fi</option>
-                <option>Sport</option>
-                <option>Thriller</option>
-            </select>
-        </form>
-    </div>
-
-    <div class="signin-box csoport">
-        <a href="/">Films</a>
-        <a href="/awards" >Awards</a>
-        <a href="/genres">Genres</a>
-        <a href="/actors">Actors</a>
-    </div>
-</nav>
+<nav></nav>
 
 
 <main>
@@ -55,20 +25,20 @@
         </label>
 
         <div class="button-container">
-            <button onclick="updateGenre(<%= award.id %>)">✔</button>
+            <button onclick="update(<%= award.id %>)">✔</button>
             <button><a href="/awards">x</a></button>
         </div>
     </form>
 
     <script>
-        function updateActor(id) {
-            let updatedActor = {
+        function update(id) {
+            let award = {
                 id,
                 nev: $('.name').val(),
-                leiras: $('.age').val(),
+                leiras: $('.description').val(),
             }
 
-            axios.post(`http://localhost:3001/award-update`, {updatedActor})
+            axios.post(`http://localhost:3001/award-update`, {award})
                 .then(() => {
                     alert('Award update ok!')
                 }).catch((response) => {

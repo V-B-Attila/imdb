@@ -31,25 +31,24 @@ router.post('/actor-create', async function (req, res){
         console.log(e);
         res.status(500).send('Unexpected error!');
     }
-
 })
 
 // Update
 router.get('/actors-update/:id', async function(req, res){
     try{
         const id = req.params.id;
-        const film = await actorDao.getById(id);
-        res.render('actor/actor-update', {film});
+        const actor = await actorDao.getById(id);
+        res.render('actor/actor-update', {actor});
     } catch (err) {
-        console.log('Something bad happend!');
+        console.log('Something bad happened!');
         console.error(err);
         res.render('error', {error: err.message});
     }
 });
 router.post('/actor-update', async function(req, res){
     try {
-        let updatedActor = req.body.actor;
-        await actorDao.update(updatedActor);
+        let actor = req.body.actor;
+        await actorDao.update(actor);
         res.status(200).send({message: 'update ok'});
     } catch (err) {
         console.log('Something bad happend..:(');

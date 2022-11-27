@@ -10,33 +10,35 @@
 
 </head>
 <body>
-    <h1>Awards 🏆</h1>
+    <h1>Awards List</h1>
     <nav>
         <div class="signin-box csoport">
             <a href="/">Films</a>
-            <a class="active" href="/awards" >Awards</a>
+            <a href="/awards" >Awards</a>
             <a href="/genres">Genres</a>
             <a href="/actors">Actors</a>
-            <a href="/awards-list">Awards List</a>
+            <a class="active" href="/awards-list">Awards List</a>
         </div>
     </nav>
-    <a class="create" href="/award-create">Create</a>
     <table>
         <thead>
             <tr>
-               <th>Name</th>
-               <th>Description</th>
-                <th>Edit</th>
-                <th>Delete</th>
+               <th>Award</th>
+               <th>Film</th>
+               <th>Actor</th>
+               <th>Date</th>
             </tr>
         </thead>
         <tbody>
-            <% for (let i = 0; i < awards.length; i++) { %>
-                <tr id = "<%= awards[i].id %>">
-                    <td><%= awards[i].nev %></td>
-                    <td><%= awards[i].leiras %></td>
-                    <td class="icon icons"><a href="/awards-update/<%= awards[i].id %>">✏</a></td>
-                    <td class="icon icons" onclick="deleteAward(<%= awards[i].id %>)">🗑</td>
+        <script>
+            console.log(<%- JSON.stringify(awardsList) %>)
+        </script>
+            <% for (let i = 0; i < awardsList.length; i++) { %>
+                <tr id = "<%= awardsList[i].id %>">
+                    <td><%= awardsList[i].award %></td>
+                    <td><%= awardsList[i].film %></td>
+                    <td><%= awardsList[i].actor %></td>
+                    <td><%= awardsList[i].given_date.toLocaleDateString('hu-HU') %></td>
                 </tr>
             <% } %>
         </tbody>

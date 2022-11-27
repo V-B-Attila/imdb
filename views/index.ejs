@@ -16,6 +16,7 @@
             <a href="/awards" >Awards</a>
             <a href="/genres">Genres</a>
             <a href="/actors">Actors</a>
+            <a href="/awards-list">Awards List</a>
         </div>
     </nav>
 
@@ -27,6 +28,7 @@
                <th>Length</th>
                <th>Release</th>
                <th>Genre</th>
+               <th>Awards</th>
                <th>Score ⭐</th>
                <th>Edit</th>
                <th>Delete</th>
@@ -39,6 +41,7 @@
                     <td><%= films[i].hossz %></td>
                     <td><%= films[i].megjelenes.toLocaleDateString("hu-HU") %></td>
                     <td><%= films[i].genres %></td>
+                    <td><%= films[i].awards %></td>
                     <td class="ertekeles"><%= films[i].ertekeles %> </td>
                     <td class="icon icons"><a href="/films-update/<%= films[i].id %>">✏</a></td>
                     <td class="icon icons" onclick="deleteFilm(<%= films[i].id %>)">🗑</td>

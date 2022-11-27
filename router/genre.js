@@ -42,4 +42,29 @@ router.delete('/genres/:id', async function(req, res){
     }
 })
 
+
+router.get('/genre-create', async function(req, res){
+    res.render('genre-create');
+});
+router.post('/genre-create', async function (req, res){
+    try {
+        console.log('Genre film!');
+        const genre = req.body.film;
+        await mufajDAO.create(film);
+
+        // const genreId = (await mufajDAO.getLatestFilm()).id;
+
+        // Create classifications
+        // const genres = req.body.genres;
+        // const genresList = genres.split(', ');
+        // await filmDAO.addGenresToFilm(filmId, genresList);
+
+        res.status(200).send({message: 'Genre created is successfully!'});
+    } catch(e) {
+        console.log(e);
+        res.status(500).send('Unexpected error!');
+    }
+
+})
+
 module.exports = router;

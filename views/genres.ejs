@@ -41,7 +41,7 @@
         <a href="/actors">Actors</a>
     </div>
 </nav>
-
+<a class="create" href="/genre-create">Create</a>
 <table>
     <thead>
     <tr>
@@ -67,7 +67,9 @@
     function deleteGenre(genreId) {
         console.log(`Deleting Genre WHERE id=${genreId}`);
 
-
+        if (!confirm('Are you sure you want to delete this?')) {
+            return;
+        }
 
         // Ajax Routine
         axios.delete(`http://localhost:3001/genres/${genreId}`)

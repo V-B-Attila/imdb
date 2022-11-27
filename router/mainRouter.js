@@ -76,6 +76,7 @@ router.get('/actors', async function(req,res){
     }
 })
 
+
 router.get('/awards', async function(req, res){
     try{
         const awards = await awardsDao.read();

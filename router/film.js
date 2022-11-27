@@ -36,18 +36,18 @@ router.get('/films-update/:id', async function(req, res){
     }
 });
 // endpoint
-router.post('/film-update', async function (req, res){
-    try {
-        console.log('Update film!');
-        const updatedFilm = req.body.updatedFilm;
-        await filmDAO.update(updatedFilm);
-        res.status(200).send({message: 'Film update is succsessful!'});
-    } catch(e) {
-        console.log(e);
-        res.status(500).send('Unexpected error!');
-    }
-
-})
+// router.post('/film-update', async function (req, res){
+//     try {
+//         console.log('Update film!');
+//         const updatedFilm = req.body.updatedFilm;
+//         await filmDAO.update(updatedFilm);
+//         res.status(200).send({message: 'Film update is succsessful!'});
+//     } catch(e) {
+//         console.log(e);
+//         res.status(500).send('Unexpected error!');
+//     }
+//
+// })
 
 // /films-create
 router.get('/films-create', async function(req, res){

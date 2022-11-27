@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/update.css">
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>Actors</h1>
+<h1>Create Actors</h1>
 <nav>
     <div class="menu-box csoport">
         <select id="menu" class="menu-class">
@@ -20,7 +21,7 @@
         <input id="searchBar" type="text" placeholder="Search..">
         <form>
             <select id="kateg">
-                <option selected = "selected">Genres</option>
+                <option selected = "selected">genres</option>
                 <option>Action</option>
                 <option>Comedy</option>
                 <option>Drama</option>
@@ -37,32 +38,46 @@
         <a href="/">Films</a>
         <a href="/awards" >Awards</a>
         <a href="/genres">Genres</a>
-        <a class="active" href="/actors">Actors</a>
+        <a href="/actors">Actors</a>
     </div>
 </nav>
 
 
 <main>
-    <!--    <form method="post" action="/actors-update/">-->
-    <label>
-        <input class="actor-name" type="text" value="<%= actor.nev %>" />
-        <input class="actor-age" type="text" value="<%= actor.kor %>" />
-    </label>
+    <form>
+        <label>
+            <span>Name:</span>
+            <input class="name" type="text" />
+        </label>
+        <label>
+            <span>Age:</span>
+            <input class="age" type="text" />
+        </label>
 
-    <div class="button-container">
-        <button onclick="updateActor(<%= actor.id %>, JSON.stringify(<% actor %>))">✔</button>
-        <button><a href="/actors">x</a></button>
-    </div>
+        <div class="button-container">
+            <button onclick="createActor()">✔</button>
+            <button><a href="/actor">x</a></button>
+        </div>
+    </form>
+
     <script>
-        function updateActors(id, actor) {
-            axios.post(`http://localhost:3001/actors-update/${id}`, {actor})
+        function createActor() {
+            let actor = {
+                nev: $('.title').val(),
+                kor: $('.release').val(),
+            }
+
+            // let body = {
+            //     film,
+            //     genres: $('.genres').val()
+            // };
+            axios.post(`http://localhost:3001/actor-create`, body)
                 .then(()=>{
-                    alert('Actor update ok!')
+                    alert('Actor created successfully!');
                 }).catch((response)=> {
                 console.log(response)
             })
         }
-
     </script>
     <!--    </form>-->
 </main>

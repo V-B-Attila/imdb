@@ -42,5 +42,43 @@ router.delete('/awards/:id', async function(req, res){
     }
 })
 
+router.get('/awards-update/:id', async function(req, res){
+    try{
+        const id = req.params.id;
+        const award = await dijDAO.getById(id);
+        console.log(award)
+        res.render('award-update', {award});
+    } catch (err) {
+        console.log('Something bad happend!');
+        console.error(err);
+        res.render('error', {error: err.message});
+    }
+});
+
+router.get('/award-create', async function(req, res){
+    res.render('award-create');
+});
+router.post('/award-create', async function (req, res){
+    try {
+        console.log('Create award!');
+        const award = req.body.award;
+        await dijDAO.create(award);
+
+        // const awardId = (await awardDAO.getLatestFilm()).id;
+
+        // Create classifications
+        // const genres = req.body.genres;
+        // const genresList = genres.split(', ');
+        // await filmDAO.addGenresToFilm(filmId, genresList);
+
+        res.status(200).send({message: 'Award created is successfully!'});
+    } catch(e) {
+        console.log(e);
+        res.status(500).send('Unexpected error!');
+    }
+
+})
+
+
 
 module.exports = router;
